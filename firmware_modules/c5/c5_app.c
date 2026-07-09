@@ -29,6 +29,15 @@ int c5_app_handle_touch(c5_touch_zone_t zone, const char *goal) {
     return echoforest_cloud_post_control(action_result.action, goal);
 }
 
+int c5_app_handle_touch_point(int x, int y, const c5_touch_layout_t *layout, const char *goal) {
+    c5_touch_action_result_t action_result = c5_touch_point_to_action(x, y, layout);
+    if (!action_result.has_action) {
+        return 0;
+    }
+
+    return echoforest_cloud_post_control(action_result.action, goal);
+}
+
 int c5_app_poll_backend(c5_screen_frame_t *out_frame, c5_speaker_prompt_t *out_prompt) {
     echoforest_state_snapshot_t next_state;
     echoforest_forest_state_t previous_forest_state = g_has_cached_state
