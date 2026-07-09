@@ -1,0 +1,19 @@
+{
+  "name": "echoforest-workspace",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Workspace helper scripts for EchoForest backend, frontend, simulator, and firmware modules.",
+  "scripts": {
+    "backend:install": "npm --prefix backend install",
+    "backend:start": "npm --prefix backend start",
+    "backend:test": "npm --prefix backend test",
+    "frontend:install": "npm --prefix frontend install",
+    "frontend:dev": "npm --prefix frontend run dev",
+    "frontend:build": "npm --prefix frontend run build",
+    "simulator:demo": "node simulator/device_simulator.js",
+    "simulator:test": "node --test simulator/test/*.test.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
