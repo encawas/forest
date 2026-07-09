@@ -173,10 +173,6 @@ class EchoForestStateEngine {
   }
 
   startBreak({ source = 'unknown', timestamp = isoNow() } = {}) {
-    if (!this.state.session || !this.state.session.active) {
-      return this.startFocus({ goal: '', source, timestamp });
-    }
-
     this.state.mode = MODE.BREAK;
     this._recordEvent('break_started', source, timestamp);
     this._recompute(timestamp);
