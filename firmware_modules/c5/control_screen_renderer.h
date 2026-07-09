@@ -7,7 +7,7 @@ extern "C" {
 #endif
 
 #define C5_SCREEN_LINE_COUNT 6
-#define C5_SCREEN_LINE_LEN 64
+#define C5_SCREEN_LINE_LEN 128
 
 typedef struct {
     char lines[C5_SCREEN_LINE_COUNT][C5_SCREEN_LINE_LEN];
