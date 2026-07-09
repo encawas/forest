@@ -71,11 +71,7 @@ export default function App() {
         body: JSON.stringify({ source: 'web', ...body }),
       });
       setState(result.state);
-      if (result.log) {
-        setLogs([result.log, ...(result.state.logs || [])]);
-      } else {
-        setLogs(result.state.logs || []);
-      }
+      setLogs(result.state.logs || (result.log ? [result.log] : []));
       setError('');
     } catch (err) {
       setError(err.message);
