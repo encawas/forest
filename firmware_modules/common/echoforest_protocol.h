@@ -57,7 +57,9 @@ typedef struct {
 } echoforest_state_snapshot_t;
 
 const char *echoforest_mode_to_wire(echoforest_mode_t mode);
+echoforest_mode_t echoforest_mode_from_wire(const char *mode);
 const char *echoforest_forest_state_to_wire(echoforest_forest_state_t state);
+echoforest_forest_state_t echoforest_forest_state_from_wire(const char *state);
 const char *echoforest_control_action_to_path(echoforest_control_action_t action);
 
 #ifdef __cplusplus
