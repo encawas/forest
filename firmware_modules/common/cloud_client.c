@@ -24,6 +24,17 @@ int echoforest_cloud_post_control(echoforest_control_action_t action, const char
     return g_transport.post_control(action, g_config.device_role, goal);
 }
 
+int echoforest_cloud_post_environment(const echoforest_environment_t *environment) {
+    if (environment == NULL || g_transport.post_environment == NULL) {
+        return -1;
+    }
+    return g_transport.post_environment(
+        g_config.device_id,
+        g_config.device_role,
+        environment
+    );
+}
+
 int echoforest_cloud_post_heartbeat(void) {
     if (g_transport.post_heartbeat == NULL) {
         return -1;
