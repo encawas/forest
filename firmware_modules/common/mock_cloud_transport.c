@@ -1,5 +1,6 @@
 #include "mock_cloud_transport.h"
 
+#include <stdio.h>
 #include <string.h>
 
 static echoforest_state_snapshot_t g_state;
