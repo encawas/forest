@@ -23,9 +23,10 @@ function createApp(options = {}) {
 
   app.post('/api/control/start_focus', (req, res, next) => {
     try {
+      const body = req.body || {};
       const state = engine.startFocus({
-        goal: req.body.goal,
-        source: req.body.source || 'web',
+        goal: body.goal,
+        source: body.source || 'web',
       });
       res.json({ ok: true, state });
     } catch (error) {
@@ -35,8 +36,9 @@ function createApp(options = {}) {
 
   app.post('/api/control/start_break', (req, res, next) => {
     try {
+      const body = req.body || {};
       const state = engine.startBreak({
-        source: req.body.source || 'web',
+        source: body.source || 'web',
       });
       res.json({ ok: true, state });
     } catch (error) {
@@ -46,8 +48,9 @@ function createApp(options = {}) {
 
   app.post('/api/control/end_focus', (req, res, next) => {
     try {
+      const body = req.body || {};
       const result = engine.endFocus({
-        source: req.body.source || 'web',
+        source: body.source || 'web',
       });
       res.json({ ok: true, state: result.state, log: result.log });
     } catch (error) {
@@ -57,13 +60,14 @@ function createApp(options = {}) {
 
   app.post('/api/device_data', (req, res, next) => {
     try {
+      const body = req.body || {};
       const state = engine.ingestEnvironment({
-        light: req.body.light,
-        noise: req.body.noise,
-        temp: req.body.temp,
-        humi: req.body.humi,
-        source: req.body.source || 's3',
-        deviceId: req.body.deviceId || 's3-main',
+        light: body.light,
+        noise: body.noise,
+        temp: body.temp,
+        humi: body.humi,
+        source: body.source || 's3',
+        deviceId: body.deviceId || 's3-main',
       });
       res.json({ ok: true, state });
     } catch (error) {
@@ -73,10 +77,11 @@ function createApp(options = {}) {
 
   app.post('/api/devices/heartbeat', (req, res, next) => {
     try {
+      const body = req.body || {};
       const state = engine.heartbeat({
-        deviceId: req.body.deviceId,
-        role: req.body.role,
-        source: req.body.source,
+        deviceId: body.deviceId,
+        role: body.role,
+        source: body.source,
       });
       res.json({ ok: true, state });
     } catch (error) {
@@ -85,7 +90,7 @@ function createApp(options = {}) {
   });
 
   app.use((error, req, res, next) => {
-    const status = error instanceof TypeError ? 400 : 500;
+    const status = error instanceof TypeError || error instanceof SyntaxError ? 400 : 500;
     res.status(status).json({
       ok: false,
       error: error.message || 'internal server error',
