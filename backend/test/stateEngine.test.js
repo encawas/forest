@@ -89,6 +89,18 @@ test('state priority: break mode overrides environment warnings', () => {
   assert.equal(state.forest_state, FOREST_STATE.BREAK);
 });
 
+test('break mode can be entered without creating a focus session', () => {
+  const engine = new EchoForestStateEngine();
+  const state = engine.startBreak({
+    source: 'c5',
+    timestamp: '2026-07-09T08:05:00.000Z',
+  });
+
+  assert.equal(state.mode, MODE.BREAK);
+  assert.equal(state.forest_state, FOREST_STATE.BREAK);
+  assert.equal(state.session, null);
+});
+
 test('invalid environment values are rejected', () => {
   const engine = new EchoForestStateEngine();
   assert.throws(() => {
