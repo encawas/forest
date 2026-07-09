@@ -1,5 +1,7 @@
 #include "echoforest_protocol.h"
 
+#include <string.h>
+
 const char *echoforest_mode_to_wire(echoforest_mode_t mode) {
     switch (mode) {
         case ECHOFOREST_MODE_FOCUS:
@@ -12,6 +14,14 @@ const char *echoforest_mode_to_wire(echoforest_mode_t mode) {
         default:
             return "idle";
     }
+}
+
+echoforest_mode_t echoforest_mode_from_wire(const char *mode) {
+    if (mode == 0) return ECHOFOREST_MODE_IDLE;
+    if (strcmp(mode, "focus") == 0) return ECHOFOREST_MODE_FOCUS;
+    if (strcmp(mode, "break") == 0) return ECHOFOREST_MODE_BREAK;
+    if (strcmp(mode, "completed") == 0) return ECHOFOREST_MODE_COMPLETED;
+    return ECHOFOREST_MODE_IDLE;
 }
 
 const char *echoforest_forest_state_to_wire(echoforest_forest_state_t state) {
@@ -32,6 +42,17 @@ const char *echoforest_forest_state_to_wire(echoforest_forest_state_t state) {
         default:
             return "idle";
     }
+}
+
+echoforest_forest_state_t echoforest_forest_state_from_wire(const char *state) {
+    if (state == 0) return ECHOFOREST_FOREST_IDLE;
+    if (strcmp(state, "growing") == 0) return ECHOFOREST_FOREST_GROWING;
+    if (strcmp(state, "light_warning") == 0) return ECHOFOREST_FOREST_LIGHT_WARNING;
+    if (strcmp(state, "noise_warning") == 0) return ECHOFOREST_FOREST_NOISE_WARNING;
+    if (strcmp(state, "comfort_warning") == 0) return ECHOFOREST_FOREST_COMFORT_WARNING;
+    if (strcmp(state, "break") == 0) return ECHOFOREST_FOREST_BREAK;
+    if (strcmp(state, "completed") == 0) return ECHOFOREST_FOREST_COMPLETED;
+    return ECHOFOREST_FOREST_IDLE;
 }
 
 const char *echoforest_control_action_to_path(echoforest_control_action_t action) {
