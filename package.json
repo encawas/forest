@@ -6,12 +6,13 @@
   "scripts": {
     "backend:install": "npm --prefix backend install",
     "backend:start": "npm --prefix backend start",
-    "backend:test": "npm --prefix backend test",
+    "backend:test": "node --test backend/test/*.test.js",
     "frontend:install": "npm --prefix frontend install",
     "frontend:dev": "npm --prefix frontend run dev",
     "frontend:build": "npm --prefix frontend run build",
     "simulator:demo": "node simulator/device_simulator.js",
-    "simulator:test": "node --test simulator/test/*.test.js"
+    "simulator:test": "node --test simulator/test/*.test.js",
+    "firmware:test": "cc -std=c11 -Wall -Wextra -Werror -Ifirmware_modules/common -Ifirmware_modules/c5 -Ifirmware_modules/s3 firmware_modules/common/cloud_client.c firmware_modules/common/echoforest_protocol.c firmware_modules/common/mock_cloud_transport.c firmware_modules/c5/c5_app.c firmware_modules/c5/control_screen_renderer.c firmware_modules/c5/speaker_events.c firmware_modules/c5/touch_actions.c firmware_modules/c5/c5_bitmap_text_renderer.c firmware_modules/s3/s3_app.c firmware_modules/s3/main_screen_renderer.c firmware_modules/s3/sensor_mock.c firmware_modules/s3/sensor_real_adapter.c firmware_modules/test/firmware_business_logic_test.c -o /tmp/echoforest_firmware_test && /tmp/echoforest_firmware_test"
   },
   "engines": {
     "node": ">=20"
