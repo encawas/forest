@@ -1,0 +1,18 @@
+{
+  "name": "echoforest-backend",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Backend state center for the EchoForest AIoT learning environment loop.",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=20"
+  }
+}
