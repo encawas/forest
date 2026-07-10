@@ -4,8 +4,20 @@ This directory stores source packages that are useful for real-hardware integrat
 
 ## S3 base project
 
+The base64 archive is stored in these ordered segments:
+
 ```text
-s3_base_project_20260710.zip.b64.part00 ... part07
+s3_base_project_20260710.zip.b64.part00
+s3_base_project_20260710.zip.b64.part01
+s3_base_project_20260710.zip.b64.part02a
+s3_base_project_20260710.zip.b64.part02b
+s3_base_project_20260710.zip.b64.part02c
+s3_base_project_20260710.zip.b64.part02d
+s3_base_project_20260710.zip.b64.part03
+s3_base_project_20260710.zip.b64.part04
+s3_base_project_20260710.zip.b64.part05
+s3_base_project_20260710.zip.b64.part06
+s3_base_project_20260710.zip.b64.part07
 ```
 
 Source package checksum after decoding:
