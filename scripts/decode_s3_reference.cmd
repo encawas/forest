@@ -8,7 +8,7 @@ set "COMBINED=%BASE%.combined"
 set "OUTPUT=hardware_reference\s3_base_project_20260710.zip"
 set "EXPECTED_SHA256=a75ff2ef026ee1d97d8b7d01eeab1fadea44af19e34c6fab8bc4668fa4ab3453"
 
-for %%P in (00 01 02 03 04 05 06 07) do (
+for %%P in (00 01 02a 02b 02c 02d 03 04 05 06 07) do (
   if not exist "%BASE%.part%%P" (
     echo [FAIL] Missing %BASE%.part%%P
     exit /b 1
@@ -18,7 +18,7 @@ for %%P in (00 01 02 03 04 05 06 07) do (
 if exist "%COMBINED%" del /q "%COMBINED%"
 if exist "%OUTPUT%" del /q "%OUTPUT%"
 
-copy /b "%BASE%.part00"+"%BASE%.part01"+"%BASE%.part02"+"%BASE%.part03"+"%BASE%.part04"+"%BASE%.part05"+"%BASE%.part06"+"%BASE%.part07" "%COMBINED%" >nul
+copy /b "%BASE%.part00"+"%BASE%.part01"+"%BASE%.part02a"+"%BASE%.part02b"+"%BASE%.part02c"+"%BASE%.part02d"+"%BASE%.part03"+"%BASE%.part04"+"%BASE%.part05"+"%BASE%.part06"+"%BASE%.part07" "%COMBINED%" >nul
 if errorlevel 1 (
   echo [FAIL] Could not combine S3 reference parts.
   exit /b 1
